@@ -1,11 +1,12 @@
-package com.example.TaskBoard.model;
+package com.example.taskboard;
 
 public enum TaskType {
-	FEATURE,
-    BUGFIXES,
-    TESTING,
-    TECDISC,
-    BUSDISC,
-    OTHERS
+	    FEATURE,
+	    BUGFIXES,
+	    TESTING,
+	    TECDISC,
+	    BUSDISC,
+	    OTHERS
+
 
 }

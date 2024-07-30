@@ -1,31 +1,40 @@
-package com.example.TaskBoard.service;
+package com.example.taskboard;
+
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.example.TaskBoard.model.TaskBoardModel;
-import com.example.TaskBoard.repository.TaskBoardReopository;
 
 @Service
 public class TaskBoardService {
 	@Autowired
-	private TaskBoardReopository repository;
-	
-	public List<TaskBoardModel> findAll() {
-		return repository.findAll();
+private TaskBoardRepository repository;
+    
+	public List<TaskBoard> getAllTaskBoards() {
+	    return repository.findAll();
+	  }
+	  
+	  public TaskBoard getTaskBoardById(String id) {
+	    return repository.findById(id).orElse(null);
+	  }
+	  
+	  public TaskBoard createTaskBoard(TaskBoard taskBoard) {
+	    return repository.save(taskBoard);
+	  }
+	  
+	  public TaskBoard updateTaskBoard(String id, TaskBoard taskBoard) {
+	    TaskBoard existingTaskBoard = repository.findById(id).orElse(null);
+	    if (existingTaskBoard != null) {
+	      existingTaskBoard.setTaskId(taskBoard.getTaskId());
+	      // Update other fields as needed
+	      return repository.save(existingTaskBoard);
+	    }
+	    return null;
+	  }
+	  
+	  public void deleteTaskBoard(String id) {
+	    repository.deleteById(id);
+	  }
 	}
-	
-	public TaskBoardModel findById(String id) {
-		return repository.findById(id).orElseThrow();
-	}
-	
-	public TaskBoardModel save(TaskBoardModel taskBoard) {
-		return repository.save(taskBoard);
-	}
-	
-	public void deleteById(String id) {
-		repository.deleteById(id);
-	}
-}
-
 
 

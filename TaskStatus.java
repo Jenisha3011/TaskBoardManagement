@@ -1,4 +1,4 @@
-package com.example.TaskBoard.model;
+package com.example.taskboard;
 
 public enum TaskStatus {
 	INPROGRESS,
@@ -8,5 +8,4 @@ public enum TaskStatus {
     PENDING,
     REOPEN
 }
-
 
